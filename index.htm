@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emre Simsek | Software Developer</title>
+  <meta name="description" content="Portfolio van Emre Simsek - Software Developer. Web development, back-end, automatisering en ICT-oplossingen." />
+  <style>
+    :root {
+      --bg: #050805;
+      --panel: rgba(7, 18, 7, 0.92);
+      --panel-2: rgba(10, 28, 10, 0.92);
+      --line: #123018;
+      --green: #6dff7a;
+      --green-soft: #38c76a;
+      --green-dark: #1b8b47;
+      --text: #d8ffd8;
+      --muted: #8ecf9e;
+      --danger: #ff6464;
+      --shadow: 0 0 18px rgba(109, 255, 122, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      background: #030503;
+    }
+    
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Consolas, "Courier New", monospace;
+    
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(20, 90, 30, 0.16),
+          transparent 38%
+        ),
+        linear-gradient(
+          180deg,
+          #020402 0%,
+          #071007 45%,
+          #020402 100%
+        );
+    
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+    
+      min-height: 100vh;
+      min-height: 100dvh;
+    
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.02),
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      opacity: 0.12;
+      z-index: 999;
+    }
+
+    .matrix-bg {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+    
+      z-index: -1;
+      overflow: hidden;
+    
+      opacity: 0.13;
+      pointer-events: none;
+    
+      font-size: 14px;
+      line-height: 14px;
+      color: var(--green);
+    
+      white-space: pre;
+      user-select: none;
+    
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(0, 255, 70, 0.06),
+          transparent 70%
+        );
+    }
+    
+    main,
+    header,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .window {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(4px);
+    }
+
+    .window-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(to right, rgba(10, 25, 10, 0.95), rgba(8, 20, 8, 0.95));
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid #1e4023;
+    }
+
+    .dot.red { background: #1d0c0c; box-shadow: 0 0 8px rgba(255, 100, 100, 0.2); }
+    .dot.yellow { background: #1c1b09; }
+    .dot.green { background: #0c1b0e; box-shadow: 0 0 8px rgba(109,255,122,0.2); }
+
+    .window-title {
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    header {
+      padding: 20px 0 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    nav {
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--green);
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(109,255,122,0.25);
+    }
+
+    .brand::before {
+      content: "> ";
+      color: var(--green-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 12px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      transition: 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+      border-color: var(--line);
+      background: rgba(109,255,122,0.05);
+      box-shadow: 0 0 10px rgba(109,255,122,0.08);
+    }
+
+    main {
+      padding: 28px 0 50px;
+    }
+
+    section {
+      margin-bottom: 24px;
+    }
+
+    .hero {
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .terminal-line {
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .prompt {
+      color: var(--green-soft);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.1;
+      margin-bottom: 14px;
+      color: var(--green);
+      text-shadow: 0 0 15px rgba(109,255,122,0.18);
+    }
+
+    .hero h2 {
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: normal;
+      margin-bottom: 18px;
+      min-height: 28px;
+    }
+
+    .hero p {
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      max-width: 700px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s ease;
+      border: 1px solid var(--green-dark);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: rgba(109,255,122,0.08);
+      color: var(--green);
+      box-shadow: 0 0 12px rgba(109,255,122,0.08);
+    }
+
+    .btn-primary:hover {
+      background: rgba(109,255,122,0.14);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(109,255,122,0.05);
+      color: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .status-box {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px;
+      align-self: start;
+    }
+
+    .status-box h3 {
+      color: var(--green);
+      margin-bottom: 14px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .status-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .status-item {
+      padding: 12px;
+      border: 1px solid rgba(109,255,122,0.12);
+      border-radius: 10px;
+      background: rgba(109,255,122,0.03);
+    }
+
+    .status-item .label {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    .status-item .value {
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .panel {
+      padding: 26px;
+    }
+
+    .section-title {
+      color: var(--green);
+      font-size: 1.2rem;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .section-title::before {
+      content: "[ ";
+      color: var(--green-soft);
+    }
+
+    .section-title::after {
+      content: " ]";
+      color: var(--green-soft);
+    }
+
+    .about-text,
+    .contact-text {
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(109,255,122,0.15);
+      background: rgba(109,255,122,0.04);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      padding: 18px;
+      border: 1px solid rgba(109,255,122,0.12);
+      border-radius: 12px;
+      background: linear-gradient(to bottom, rgba(109,255,122,0.03), rgba(109,255,122,0.015));
+      transition: 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 16px rgba(109,255,122,0.08);
+      border-color: rgba(109,255,122,0.25);
+    }
+
+    .project-number {
+      color: var(--green-soft);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .project-card h3 {
+      color: var(--green);
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .project-card p {
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 14px;
+      font-size: 0.96rem;
+    }
+
+    .project-tech {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 14px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .project-links a {
+      color: var(--green);
+      text-decoration: none;
+      border: 1px solid rgba(109,255,122,0.15);
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+    }
+
+    .project-links a:hover {
+      background: rgba(109,255,122,0.06);
+    }
+
+    .services-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .service-item {
+      border-left: 3px solid var(--green-dark);
+      padding: 10px 0 10px 14px;
+    }
+
+    .service-item strong {
+      color: var(--green);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .service-item span {
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .contact-card {
+      padding: 18px;
+      border: 1px solid rgba(109,255,122,0.12);
+      border-radius: 12px;
+      background: rgba(109,255,122,0.03);
+    }
+
+    .contact-card strong {
+      color: var(--green);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .contact-card a,
+    .contact-card span {
+      color: var(--muted);
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-card a:hover {
+      color: var(--green);
+    }
+
+    footer {
+      padding: 24px 0 40px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      animation: blink 0.8s step-end infinite;
+      color: var(--green);
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .grid-2,
+      .contact-grid,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        background:
+          radial-gradient(
+            circle at top,
+            rgba(20, 100, 35, 0.18),
+            transparent 42%
+          ),
+          linear-gradient(
+            180deg,
+            #020402 0%,
+            #061006 50%,
+            #020402 100%
+          );
+      }
+    
+      .matrix-bg {
+        opacity: 0.1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="matrix-bg" id="matrixBg"></div>
+
+  <header>
+    <div class="container">
+      <div class="window">
+        <div class="window-top">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="window-title">portfolio_terminal.exe</div>
+          <div></div>
+        </div>
+        <nav>
+          <div class="brand">emre.simsek</div>
+          <div class="nav-links">
+            <a href="#about">Over mij</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projecten</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="window hero">
+      <div>
+        <div class="terminal-line"><span class="prompt">system@portfolio:~$</span> boot developer_profile</div>
+        <h1>EMRE SIMSEK</h1>
+        <h2 id="typingText"></h2>
+        <p>
+          Ik ben een software developer met een sterke interesse in web development,
+          back-end systemen en automatisering, ook bouw ik games. Momenteel volg ik de opleiding
+          Software Development, terwijl ik daarnaast werk aan projecten en mijn
+          portfolio uitbreid. Ik zoek freelance, parttime of projectmatige ICT-opdrachten
+          waarbij ik echte waarde kan leveren.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#projects">Bekijk Projecten</a>
+          <a class="btn btn-secondary" href="#contact">Neem Contact Op</a>
+        </div>
+      </div>
+
+      <aside class="status-box">
+        <h3>System Status</h3>
+        <div class="status-grid">
+          <div class="status-item">
+            <span class="label">Rol</span>
+            <span class="value">Software Developer</span>
+          </div>
+          <div class="status-item">
+            <span class="label">Focus</span>
+            <span class="value">Web, Back-end, Automation</span>
+          </div>
+          <div class="status-item">
+            <span class="label">Beschikbaarheid</span>
+            <span class="value">Open voor freelance / parttime</span>
+          </div>
+          <div class="status-item">
+            <span class="label">Locatie</span>
+            <span class="value">Nederland</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid-2">
+      <div class="window panel" id="about">
+        <h2 class="section-title">Over Mij</h2>
+        <p class="about-text">
+          Ik programmeer al sinds jonge leeftijd en richt mij op het bouwen van
+          praktische software oplossingen. Denk aan websites, webapplicaties,
+          dashboards en automatiseringen die processen simpeler en efficiënter maken.
+          Mijn doel is om naast mijn opleiding ervaring op te bouwen binnen de ICT-sector
+          en bedrijven te helpen met betrouwbare technische oplossingen.
+        </p>
+      </div>
+
+      <div class="window panel" id="skills">
+        <h2 class="section-title">Tech Stack</h2>
+        <div class="tags">
+          <span class="tag">HTML</span>
+          <span class="tag">Lua</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Git</span>
+          <span class="tag">SQL</span>
+          <span class="tag">REST API</span>
+          <span class="tag">Responsive Design</span>
+          <span class="tag">Debugging</span>
+          <span class="tag">Automation</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="window panel" id="projects">
+      <h2 class="section-title">Geselecteerde Projecten</h2>
+      <div class="projects">
+        <article class="project-card">
+          <div class="project-number">[01]</div>
+          <h3>Termination - Lua U</h3>
+          <p>
+            Een open-world game waar jouw wil wet is, ik ben hier nu 3 jaar mee bezig en
+            het is nog in ontwikkeling!
+          </p>
+          <div class="project-tech">Tech: Lua U / Back-end koppeling</div>
+          <div class="project-links">
+            <a href="https://www.roblox.com/games/103669676390867/Termination">Bekijken</a>
+            <a href="https://github.com/turboohh/Termination-OG">GitHub</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-number">[02]</div>
+          <h3>Castle Defence - Lua U</h3>
+          <p>
+            Dit is een game dat geïnspireerd is op de mobile game Kingshot, dit project vergt het meeste energie
+            omdat er veel aandacht is besteed aan dopamine factoren.
+          </p>
+          <div class="project-tech">Tech: React / Node.js / SQL</div>
+          <div class="project-links">
+            <a href="#">(N/A)</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="window panel" id="services">
+        <h2 class="section-title">Services</h2>
+        <div class="services-list">
+          <div class="service-item">
+            <strong>Web Development</strong>
+            <span>Ik bouw nette, snelle en responsive websites voor bedrijven, portfolio's en diensten.</span>
+          </div>
+          <div class="service-item">
+            <strong>Web Applications</strong>
+            <span>Ontwikkeling van dashboards, tools en systemen voor dagelijks gebruik.</span>
+          </div>
+           <div class="service-item">
+            <strong>Game Development</strong>
+            <span>Ontwikkeling van games die handmatig vanaf 0 gebouwd kan worden, ook hierbij wordt zoveel mogelijk gebruik gemaakt van automation zodat je alles gemakkelijk kunt bijhouden.</span>
+          </div>
+          <div class="service-item">
+            <strong>Back-end & API Integrations</strong>
+            <span>Ik help met logica, dataopslag, koppelingen en technische functionaliteit achter de schermen.</span>
+          </div>
+          <div class="service-item">
+            <strong>Automation</strong>
+            <span>Processen slimmer maken met automatische verwerking van data, formulieren en meldingen.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="window panel">
+        <h2 class="section-title">Waarom Mij?</h2>
+        <p class="about-text">
+          Ik combineer technische interesse met een praktische aanpak. Ik denk niet
+          alleen aan code, maar ook aan wat een bedrijf er daadwerkelijk aan heeft.
+          Mijn focus ligt op duidelijke communicatie, nette oplevering en oplossingen
+          die bruikbaar zijn in de praktijk.
+        </p>
+      </div>
+    </section>
+
+    <section class="window panel" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="contact-text" style="margin-bottom: 18px;">
+        Ben je op zoek naar een gemotiveerde developer voor een website, webapp,
+        automatisering of andere ICT-opdracht? Neem gerust contact met mij op.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <strong>E-mail</strong>
+          <a href="mailto:emre.zakelijk.2005@gmail.com">emre.zakelijk.2005@gmail.com</a>
+        </div>
+
+        <div class="contact-card">
+          <strong>Telefoon</strong>
+          <span>+31 6 21 52 09 28</span>
+        </div>
+
+        <div class="contact-card">
+          <strong>LinkedIn</strong>
+          <a href="https://www.linkedin.com/in/emre-simsek-51509029a/" target="_blank">linkedin.com/in/emre-simsek-51509029a/</a>
+        </div>
+
+        <div class="contact-card">
+          <strong>GitHub</strong>
+          <a href="https://github.com/turboohh" target="_blank">github.com/turboohh</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="window panel">
+        <p>&copy; <span id="year"></span> Emre Simsek // developer_portfolio.exe (niet zomaar exe bestanden openen, anders kan je een virus krijgen :D)</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const typingText = document.getElementById("typingText");
+    const words = [
+      "Software Developer_",
+      "Game Developer_",
+      "Web Developer_",
+      "Back-end Technisch_",
+      "Automatie Gefocust_",
+      "Open voor ICT mogelijkheden_"
+    ];
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeEffect() {
+      const currentWord = words[wordIndex];
+      typingText.textContent = currentWord.slice(0, charIndex) + (charIndex % 2 === 0 ? "" : "");
+      if (!deleting) {
+        charIndex++;
+        if (charIndex > currentWord.length) {
+          deleting = true;
+          setTimeout(typeEffect, 1000);
+          return;
+        }
+      } else {
+        charIndex--;
+        if (charIndex === 0) {
+          deleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+        }
+      }
+      setTimeout(typeEffect, deleting ? 45 : 80);
+    }
+
+    typeEffect();
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const matrixBg = document.getElementById("matrixBg");
+    const chars = "01アイウエオカキクケコABCDEFGHIJKLMNOPQRSTUVWXYZ$#";
+    let output = "";
+
+    for (let i = 0; i < 300; i++) {
+      let line = "";
+      const lineLength = Math.floor(Math.random() * 42) + 12;
+      for (let j = 0; j < lineLength; j++) {
+        line += chars[Math.floor(Math.random() * chars.length)];
+      }
+      output += line + "\n";
+    }
+
+    matrixBg.textContent = output;
+  </script>
+</body>
+</html>
